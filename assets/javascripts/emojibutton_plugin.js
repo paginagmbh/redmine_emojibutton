@@ -33,7 +33,7 @@ jsToolBar.prototype.elements.emoji = {
 				emojiTabs = emojiTabs + '<div id="tabs-'+ (i+1) +'">';
 
 				jQuery.each( val, function( j, valIcon ) {
-					emojiTabs = emojiTabs + '<img width="20" height="20" title=":'+valIcon+':" src="/images/emoji/'+emoji_url[emojiPlanesTitles[i]][j]+'.png" alt="'+valIcon+'" style="padding:3px;cursor:pointer;" onclick=" precodeTextField.encloseSelection(\':'+valIcon+':\');'+hideJs+'"/>';
+					emojiTabs = emojiTabs + '<img width="20" height="20" title=":'+valIcon+':" src="/images/emoji/'+emoji_url[emojiPlanesTitles[i]][j]+'.png" alt="'+valIcon+'" style="padding:3px;cursor:pointer;" onclick="precodeTextField.encloseSelection(\':'+valIcon+':\');'+hideJs+'" />';
 				});
 
 				emojiTabs = emojiTabs + '</div>';
