@@ -33,11 +33,15 @@ Installation
 
         $ rake emoji
 
- 4.  Run the plugin rake task to provide the assets (from the Redmine root directory):
+ 4. If your Redmine version 4.1, run the following rake install. Otherwise, skip to step 5.
+ 
+        $ rake emojibutton:install
+
+ 5.  Run the plugin rake task to provide the assets (from the Redmine root directory):
 
         $ rake redmine:plugins:migrate RAILS_ENV=production
 
- 5. Restart redmine
+ 6. Restart redmine
 
 
 Usage
