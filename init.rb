@@ -33,7 +33,7 @@ Rails.configuration.to_prepare do
     end
 
     unless Redmine::WikiFormatting::helper_for(format).included_modules.include? EmojiButtonPlugin::Helper::Patch
-     Redmine::WikiFormatting::helper_for(format).send(:include, EmojiButtonPlugin::Helper::Patch)
+     Redmine::WikiFormatting::helper_for(format).prepend EmojiButtonPlugin::Helper::Patch
     end
   end
 end

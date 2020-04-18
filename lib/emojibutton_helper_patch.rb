@@ -18,25 +18,8 @@
 module EmojiButtonPlugin
   module Helper
     module Patch
-      def self.included(base) # :nodoc:
-        base.send(:include, HelperMethodsWikiExtensions)
-        base.class_eval do
-          unloadable # Send unloadable so it will not be unloaded in development
-          if Rails.version < '5.0.0'
-            alias_method_chain :heads_for_wiki_formatter, :redmine_emojibutton
-          else
-            alias_method :heads_for_wiki_formatter_without_redmine_emojibutton, :heads_for_wiki_formatter
-            alias_method :heads_for_wiki_formatter, :heads_for_wiki_formatter_with_redmine_emojibutton
-          end
-        end
-      end
-    end
-
-    private
-
-    module HelperMethodsWikiExtensions
-      def heads_for_wiki_formatter_with_redmine_emojibutton
-        heads_for_wiki_formatter_without_redmine_emojibutton
+      def heads_for_wiki_formatter
+        super
         return if ie6_or_ie7?
 
         unless @heads_for_wiki_redmine_emojibutton_included
@@ -50,7 +33,7 @@ module EmojiButtonPlugin
             unless settings.empty?
               o << javascript_tag(settings)
             end
-            
+
             o << javascript_include_tag('emojibutton_plugin.js', :plugin => 'redmine_emojibutton')
             o << stylesheet_link_tag('emojibutton_plugin.css', :plugin => 'redmine_emojibutton')
 
